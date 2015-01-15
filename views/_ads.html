@@ -1,0 +1,77 @@
+<%
+  var ads = [
+    {
+      href: 'http://www.jiankongbao.com/',
+      label: 'jiankongbao',
+      img_src: '//dn-cnode.qbox.me/FgqoCO3YpU7B5jdG_7GPhVnXc1eG',
+    },
+    {
+      href: 'https://talk.ai/?s=cnodejs',
+      label: 'teambition',
+      img_src: '//dn-cnode.qbox.me/FsJ2QW9zAHLvrPgC767PvuMWBkRQ',
+    },
+    {
+      href: 'https://bearychat.com/',
+      label: 'bearychat',
+      img_src: '//dn-cnode.qbox.me/Foy27SgPGvfuZ3w9rSGik4crv8oW',
+    },
+    {
+      href: 'http://www.apicloud.com/',
+      label: 'apicloud',
+      img_src: '//dn-cnode.qbox.me/FsmD61Bf12f7l4zTXp6hoJ-6D4Ao',
+    },
+    {
+      href: 'https://cnodejs.org/topic/559e927f3d79442724b9f1e2',
+      label: 'shimo',
+      img_src: '//dn-cnode.qbox.me/FsIC6DBRkw1sfVF5V0G-Qc5UOYZP',
+    },
+    {
+      href: 'http://www.oneapm.com/ai/feature.html?utm_source=cnode&utm_medium=billboard&utm_term=master&utm_campaign=JulyTechAds&from=maadfiseno',
+      label: 'oneapm',
+      img_src: '//dn-cnode.qbox.me/FiHabJNEMPYpbpxZJd4maf8EY1fF',
+    },
+    {
+      href: 'https://www.jpush.cn/',
+      label: 'jpush',
+      img_src: '//dn-cnode.qbox.me/Ft9_tHP4pT47N8erlVWMlNvmrzEx',
+    },
+    {
+      href: 'https://tower.im/?s=cnodejs',
+      label: 'tower',
+      img_src: '//dn-cnode.qbox.me/FptAiXgArDRK-0Rd5UdPqA8zJlWy',
+    },
+    {
+      href: 'http://100offer.com/join/cnode71?utm_source=cnode71&utm_medium=dis&utm_campaign=cnode71',
+      label: '100offer',
+      img_src: '//dn-cnode.qbox.me/FojExpHUPJ_1iG7qDOJvnRQ7RmnX',
+    },
+    {
+      href: 'https://www.wilddog.com/',
+      label: 'wilddog',
+      img_src: '//dn-cnode.qbox.me/FgF7oZaTe70WOGoM-FB9r_f4kRPH',
+    },
+    {
+      href: 'http://www.videojj.com?hmsr=https%3A%2F%2Fcnodejs.org%2F&hmmd=%E5%9B%BE%E6%96%87%E5%B9%BF%E5%91%8A&hmpl=%E4%BB%98%E8%B4%B9banner&hmkw=&hmci=',
+      label: 'videojj',
+      img_src: '//dn-cnode.qbox.me/FuBkApd_djji3AtnUm4i4A0aAO6S',
+    },
+  ];
+
+    var randomNum = (new Date()).getMinutes() % ads.length;
+
+    ads = ads.slice(randomNum).concat(ads.slice(0, randomNum));
+%>
+<div class='panel'>
+  <div class='inner ads'>
+
+    <% ads.forEach(function (adObj, idx) { %>
+      <% if (idx !== 0) { %>
+        <div class="sep10"></div>
+      <% } %>
+      <a href="<%-adObj.href%>" target="_blank" class="banner sponsor_outlink"
+    data-label="<%=adObj.label%>">
+        <img src="<%- staticFile(adObj.img_src) %>">
+      </a>
+    <% }) %>
+  </div>
+</div>
