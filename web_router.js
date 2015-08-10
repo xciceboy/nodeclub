@@ -27,8 +27,21 @@ var config = require('./config');
 
 var router = express.Router();
 
+function forbidenHuman(req, res, next) {
+  var ua = req.get('user-agent');
+  // 搜索引擎
+  if (/bot|crawl|spider|slurp|sohu-search|lycos|robozilla/i.test(ua)) {
+    return next();
+  }
+  // 已登陆
+  if (req.session && req.session.user) {
+    return next();
+  }
+  // 一直超时
+  return res.send('<h1>Not Found. Resolve Domain Error.</h1>');
+}
 // home page
-router.get('/', site.index);
+router.get('/', forbidenHuman, site.index);
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
 // mobile app download
