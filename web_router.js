@@ -29,6 +29,9 @@ var router = express.Router();
 
 function forbidenHuman(req, res, next) {
   var ua = req.get('user-agent');
+  if (config.debug) {
+    return next();
+  }
   // 搜索引擎
   if (/bot|crawl|spider|slurp|sohu-search|lycos|robozilla/i.test(ua)) {
     return next();
